@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Love Story💏 ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<style>
+*{ margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+body{ overflow:hidden; }
+
+/* Lock Screen Love Theme */
+#lockScreen{
+  position:fixed;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  background: linear-gradient(135deg, #FF77A9, #FF1A70, #EC407A);
+  color:white;
+  font-family:'Dancing Script',cursive;
+  font-size:28px;
+  z-index:9999;
+}
+#lockScreen input{
+  margin-top:20px;
+  padding:12px 20px;
+  border-radius:25px;
+  border:none;
+  font-size:18px;
+  text-align:center;
+}
+#lockScreen button{
+  margin-top:15px;
+  padding:12px 25px;
+  border-radius:25px;
+  border:none;
+  background:#FF4081;
+  color:white;
+  font-size:18px;
+  cursor:pointer;
+  transition:0.3s;
+}
+#lockScreen button:hover{ background:#FF1A70; }
+
+/* Page Styling */
+.page{
+  position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:30px;
+  opacity:0; pointer-events:none; transform:scale(0.96); transition:0.8s ease;
+}
+.page.active{ opacity:1; pointer-events:auto; transform:scale(1); }
+
+.heart{ font-size:80px; animation:pulse 1.5s infinite; color:#FF1A70; }
+@keyframes pulse{ 0%{transform:scale(1);} 50%{transform:scale(1.3);} 100%{transform:scale(1);} }
+
+h1,h2{ font-family:'Playfair Display',serif; color:#C2185B; }
+.subtitle{ font-family:'Dancing Script',cursive; font-size:26px; color:#FF4081; margin-top:10px; opacity:0; animation:fadeUp 1s forwards; animation-delay:0.5s; }
+
+.card{ background:rgba(255,255,255,0.85); padding:30px; border-radius:25px; max-width:700px; box-shadow:0 15px 40px rgba(255,0,100,0.2); }
+
+.date{ margin-top:10px; color:#FF1A70; font-weight:600; }
+.counter{ margin-top:15px; font-size:18px; color:#E91E63; font-weight:600; }
+
+.btn{
+  margin-top:25px; padding:14px 36px; border-radius:50px; border:none;
+  background:linear-gradient(45deg,#FF4081,#FF1A70); color:white; font-size:16px;
+  cursor:pointer; transition:0.3s; position:relative; overflow:hidden;
+}
+.btn:hover{ transform:scale(1.05); box-shadow:0 10px 30px rgba(255,20,100,0.4); }
+
+.button-heart{ position:absolute; font-size:18px; color:#FF4081; pointer-events:none; animation:heart-pop 1s forwards; }
+@keyframes heart-pop{ 0%{transform:scale(1) translateY(0); opacity:1;} 100%{transform:scale(1.5) translateY(-50px); opacity:0;} }
+
+.gallery{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:18px; margin-top:20px; width:100%; max-width:900px; overflow-y:auto; max-height:60vh; }
+.photo{ border-radius:18px; overflow:hidden; box-shadow:0 12px 25px rgba(255,0,100,0.15); transition:0.4s; }
+.photo img, .photo video{ width:100%; height:100%; object-fit:cover; border-radius:18px; transition:0.4s; }
+.photo:hover img, .photo:hover video{ transform:scale(1.08); filter: drop-shadow(0 0 15px #FF4081); }
+
+.floating-heart{ position:absolute; font-size:22px; color:#FF4081; animation:floatUp 5s linear forwards; }
+@keyframes floatUp{ from{bottom:-30px; opacity:0;} to{bottom:100%; opacity:1;} }
+
+#heart-container{ position:absolute; width:100%; height:100%; top:0; left:0; pointer-events:none; }
+.heart-small{ position:absolute; color:rgba(255,20,100,0.6); font-size:22px; animation:animate 10s linear infinite; bottom:-10%; }
+@keyframes animate{ 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(-110vh) rotate(720deg); opacity: 0; } }
+
+.floating-heart-mini{ position:absolute; font-size:16px; color:rgba(255,64,129,0.6); animation:floatUpMini 6s linear infinite; }
+@keyframes floatUpMini{ 0%{transform:translateY(0) rotate(0deg); opacity:1;} 100%{transform:translateY(-120vh) rotate(360deg); opacity:0;} }
+
+@keyframes fadeUp{ 0%{opacity:0; transform:translateY(20px);} 100%{opacity:1; transform:translateY(0);} }
+</style>
+</head>
+
+<body>
+<!-- LOCK SCREEN -->
+<div id="lockScreen">
+  <div>💗 My Love Fatuuu 💗</div>
+  <input type="password" id="passInput" placeholder="Enter Password">
+  <button onclick="checkPass()">Enter</button>
+  <div id="lockMsg" style="margin-top:15px; font-size:16px;"></div>
+</div>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+  <div class="heart">💞️</div>
+  <h1>S💗F</h1>
+  <h1>Our Love Story👀💌</h1>
+  <p class="subtitle">It all started with a message…</p>
+  <p class="subtitle">Happy Valentine's Day, My Love Fatuuu Jaan💖</p>
+  <button class="btn" onclick="goPage(2)">Next ➤</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+  <div class="card">
+    <h2>📩 First Message</h2>
+    <div class="date">20 August 2025 · 2:59</div>
+    <p>First Meet</p>
+    <div class="first meet date">08 October · 2025</div>
+    <button class="btn" onclick="goPage(3)">Next ➤</button>
+  </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+  <div class="card">
+    <h2>💞 Relation date and your are my forever💘</h2>
+    <div class="date">6 September💌</div>
+    <div class="counter" id="counter"></div>
+    <button class="btn" onclick="goPage(4)">Our Memories 📸</button>
+  </div>
+</div>
+
+<!-- PAGE 4 : PHOTO + VIDEO OPTION -->
+<div class="page" id="page4">
+  <h2>Our Beautiful Moments ❤️</h2>
+  <div class="gallery">
+    <div class="photo">
+      <img src="https://dl.dropbox.com/scl/fi/rn6f7h0c3o1k45hloj2rl/retouch_2026020602424231.jpg?rlkey=f4zm2l2d0tl600g4bo5jl10gr&st=qkygzgw4&dl=0" />
+    </div>
+    <div class="photo">
+      <video controls>
+        <source src="https://dl.dropbox.com/scl/fi/34hdm16fd2tn4afcvodpq/lv_0_20251214181902.mp4?rlkey=72nlp878t0k8474b611uusork&st=ff9lxld3&dl=0" type="video/mp4">
+      </video>
+    </div>
+  </div>
+  <button class="btn" onclick="goPage(5)">Open Surprise 🎁</button>
+</div>
+
+<!-- PAGE 5 : PROMISE + KOSOM + SCROLLABLE -->
+<div class="page" id="page5">
+  <div id="heart-container"></div>
+  <div class="card" style="max-height:70vh; overflow-y:auto;">
+    <h1>Hey Beautiful Wifey,</h1>
+    <p>Fatuu Boww jaan,
+    Tumi amr life er best person, tumake ami sob theke beshi valobashi, ami tomar sathe sarajibon thakbo eksathe bachbo, Tumi amr sob kisu, tumr jnno valo thaka, tumi amake kokhno chariya jaio na koliza, tumi amake aktu bujio, ami onek vul korbo amake bujaiyao chariya jaio nah, ar amake niya kokhno tumr tension nai ami tomar sathe life time thakbo jaan, ummmah ummmah ummmah jaan😘💋...</p>
+    
+    <button class="btn" onclick="toggleMessage('promiseMsg',this,'Promise korsii fatuu jaan,I’ll never leave you jann❤️')">Promise</button>
+    <div id="promiseMsg" style="margin:10px 0; font-weight:bold; color:#FF4081;"></div>
+    
+    <button class="btn" onclick="toggleMessage('kosomMsg',this,'Kosom dilamm koliza ❤ I kosom I’ll never leave you💘🫶🏼')">Kosom</button>
+    <div id="kosomMsg" style="margin:10px 0; font-weight:bold; color:#FF4081;"></div>
+    
+    <button class="btn" onclick="showSurprise()">Click for a Surprise!</button>
+    <div id="surprise" style="display:none; margin-top:20px; font-size:32px; font-weight:bold; background: linear-gradient(90deg,#FF6EC7,#FF1A70,#EC407A,#FF77A9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align:center;">
+      Happy Valentine’s Day Fatuu kolizaa🍫🌷🫶🏼
+    </div>
+    
+    <button class="btn" style="margin-top:15px;" onclick="goPage(4)">Back 🔙</button>
+  </div>
+</div>
+
+<!-- PAGE 6 : LETTER & SURPRISE -->
+<div class="page" id="page6">
+  <div class="card">
+    <h1>💌 Your Letter 💌</h1>
+    <p>Click the button below to see your special surprise!</p>
+    <button class="btn" style="background: linear-gradient(45deg,#42a5f5,#1e88e5);" onclick="showLetterSurprise()">Open Letter 🎁</button>
+    <div id="letterSurprise" style="display:none; margin-top:20px; font-size:28px; font-weight:bold; color:#1E88E5; text-align:center;">
+      Happy Valentine’s Day 🍫🌷
+    </div>
+    <button class="btn" style="margin-top:15px;" onclick="goPage(5)">Back 🔙</button>
+  </div>
+</div>
+
+<script>
+/* LOCK SCREEN */
+function checkPass(){
+  const input = document.getElementById('passInput').value;
+  if(input === "I love you Fatuuu"){
+    document.getElementById('lockScreen').style.display='none';
+    goPage(1);
+  }else{
+    document.getElementById('lockMsg').innerText="Wrong password Fatuuu Jaan 💔 Try again.";
+  }
+}
+
+/* PAGE NAVIGATION */
+function goPage(n){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page'+n).classList.add('active');
+}
+
+/* PROMISE/KOSOM TOGGLE */
+function toggleMessage(id,btn,text){
+  const el=document.getElementById(id);
+  if(el.style.display==='block'){
+    el.style.display='none';
+    btn.style.transform='scale(1)';
+  }else{
+    el.innerText=text;
+    el.style.display='block';
+    btn.style.transform='scale(1.05)';
+  }
+}
+
+/* OPEN LETTER PAGE */
+function openLetterPage(){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page6').classList.add('active');
+}
+
+/* SHOW LETTER SURPRISE */
+function showLetterSurprise(){
+  document.getElementById('letterSurprise').style.display='block';
+  const colors = ['#42a5f5','#64b5f6','#1e88e5','#2196f3'];
+  for(let i=0;i<20;i++){
+    const h = document.createElement('div');
+    h.className='heart-small';
+    h.innerText='💖';
+    h.style.left = Math.random()*100 + '%';
+    h.style.color = colors[Math.floor(Math.random()*colors.length)];
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),5000);
+  }
+}
+
+/* LIVE COUNTER */
+const startDate = new Date("2025-09-06T02:59:30");
+function updateCounter(){
+  const now = new Date();
+  let diff = now - startDate;
+  let days = Math.floor(diff / (1000*60*60*24));
+  let hours = Math.floor((diff / (1000*60*60)) % 24);
+  let minutes = Math.floor((diff / (1000*60)) % 60);
+  let seconds = Math.floor((diff / 1000) % 60);
+  document.getElementById("counter").innerHTML =
+    `💖 Together for ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds 💖`;
+}
+updateCounter(); setInterval(updateCounter,1000);
+
+/* SURPRISE BALLOONS + CONFETTI */
+function showSurprise(){
+  document.getElementById('surprise').style.display='block';
+  const colors = ['#FF6EC7','#FF1A70','#EC407A','#FF77A9','#FFB6C1','#FF69B4'];
+  for(let i=0;i<25;i++){
+    const balloon = document.createElement('div');
+    balloon.className='balloon';
+    balloon.innerText='🎈';
+    balloon.style.left=Math.random()*90+'vw';
+    balloon.style.fontSize=(24+Math.random()*24)+'px';
+    balloon.style.color=colors[Math.floor(Math.random()*colors.length)];
+    document.body.appendChild(balloon);
+    setTimeout(()=>balloon.remove(),8000+Math.random()*2000);
+  }
+  for(let i=0;i<50;i++){
+    const conf=document.createElement('div');
+    conf.className='confetti';
+    conf.style.left=Math.random()*100+'vw';
+    conf.style.background=colors[Math.floor(Math.random()*colors.length)];
+    conf.style.width=conf.style.height=(5+Math.random()*6)+'px';
+    document.body.appendChild(conf);
+    setTimeout(()=>conf.remove(),5000+Math.random()*3000);
+  }
+}
+
+/* Floating hearts on page5 */
+setInterval(()=>{
+  if(document.getElementById('page5').classList.contains('active')){
+    let h=document.createElement('div');
+    h.className='heart-small';
+    h.innerHTML='💖';
+    h.style.left=Math.random()*100+'%';
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),5000);
+  }
+},500);
+
+/* Page1 mini hearts */
+setInterval(()=>{
+  if(document.getElementById('page1').classList.contains('active')){
+    const heart=document.createElement('div');
+    heart.className='floating-heart-mini';
+    heart.innerText='💖';
+    heart.style.left=Math.random()*90+'vw';
+    heart.style.fontSize=(10+Math.random()*10)+'px';
+    document.getElementById('page1').appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+  }
+},400);
+</script>
+</body>
+</html>
